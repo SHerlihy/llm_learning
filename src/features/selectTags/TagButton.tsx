@@ -20,10 +20,15 @@ const TagButton = ({
     const { tags } = useSearch({ from: '/' })
 
     useEffect(() => {
-        if (tags.includes(tag)) {
-            setSelected(true)
-        } else {
+        if(!tags){
             setSelected(false)
+            return
+        }
+
+        if (tags[tag] === undefined) {
+            setSelected(false)
+        } else {
+            setSelected(true)
         }
     }, [tag, tags])
 

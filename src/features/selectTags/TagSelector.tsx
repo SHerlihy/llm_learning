@@ -6,7 +6,6 @@ type Props = {
     tags: typeof tags
 }
 
-
 const TagSelector = ({
     tags
 }: Props) => {
@@ -15,21 +14,17 @@ const TagSelector = ({
     const handleClick = (tag: Tag) => {
         navigate({
             search: (params) => {
-                //@ts-ignore
-                if (Object.hasOwn(params, 'tags') && params.tags.find(tag)) {
-                    //@ts-ignore
-                    const tagIdx = params.tags.findIndex(tag)
-                    params.tags.splice(tagIdx)
+                if (!params.tags) {
+                    params['tags'] = {}
+                }
+
+                if (params.tags[tag] === undefined) {
+                    params.tags[tag] = true
+                    return params
+                } else {
+                    delete params.tags[tag]
                     return params
                 }
-
-                if (!Object.hasOwn(params, 'tags')) {
-                    params['tags'] = []
-                }
-
-                params.tags.push(tag)
-
-                return params
             },
         })
     }

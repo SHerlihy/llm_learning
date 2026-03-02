@@ -13,7 +13,7 @@ export const tags = [
 
 export type Tag = (typeof tags)[number]
 
-const TagsEnum = z.enum(tags)
+export const TagsEnum = z.enum(tags)
 
 const Resource = z.object({
     resourceName: z.string(),
