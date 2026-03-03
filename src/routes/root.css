@@ -2,8 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
     --radius: 0.625rem;
     --background: oklch(1 0 0);
@@ -38,9 +36,9 @@
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
 
-    --unselected: oklch(0 0.1 0);
-    --selected: oklch(0 0.4 120);
-    --hover: oklch(from var(--selected) l c h / calc(alpha - 0.1));
+    --unselected: oklch(from var(--selected) l 0 h);
+    --selected: oklch(from var(--primary) l 0.1 120);
+    --hover: oklch(from var(--selected) l calc(c + 0.2) h);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,9 +75,9 @@
         --sidebar-border: oklch(1 0 0 / 10%);
         --sidebar-ring: oklch(0.556 0 0);
 
-        --unselected: oklch(0 0.1 0);
-        --selected: oklch(0 0.4 120);
-        --hover: oklch(from var(--selected) l c h / calc(alpha - 0.1));
+        --unselected: oklch(from var(--selected) l 0 h);
+        --selected: oklch(from var(--primary) l 0.1 120);
+        --hover: oklch(from var(--selected) l calc(c + 0.2) h);
     }
 }
 
