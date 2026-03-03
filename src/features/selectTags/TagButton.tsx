@@ -3,7 +3,7 @@ import { useSearch } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Tag } from '@/resources'
 
-const unselectedColor = 'bg-grey-100'
+const unselectedColor = 'bg-(--unselected)'
 
 type Props = {
     tag: Tag
@@ -13,7 +13,7 @@ type Props = {
 
 const TagButton = ({
     tag,
-    selectColor = 'bg-green-100',
+    selectColor = 'bg-(--selected)',
     onClick
 }: Props) => {
     const [isSelected, setSelected] = useState(false)
@@ -37,6 +37,7 @@ const TagButton = ({
             onClick={onClick}
             className={`
                 ${isSelected ? selectColor : unselectedColor}
+                hover:bg-(--hover)
             `}
         >
             {tag}
