@@ -38,6 +38,8 @@ const TagButton = ({
             className={`
                 ${isSelected ? selectColor : unselectedColor}
                 hover:bg-(--hover)
+                hover:cursor-pointer
+                active:bg-green-800
             `}
         >
             {tag}

@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { usingClaudeJR } from "./usingClaudeJR";
+import { loavableVAntigrav } from "./lovableVAntigrav";
 
 const vibeTags = [
     'chill'
@@ -25,13 +26,15 @@ const Resource = z.object({
 
 export type Resource = z.infer<typeof Resource>
 
-const allResources = [
+const allResourcesByDoC: Array<Resource> = [
+    loavableVAntigrav,
     usingClaudeJR
 ]
+.sort((a,b)=> b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
 
 export const tagToResources: Record<Tag, Array<Resource>> = {}
 
-allResources.forEach((resource) => {
+allResourcesByDoC.forEach((resource) => {
     const tags = resource.tags
     tags.forEach((tag) => {
         if (Object.hasOwn(tagToResources, tag)) {

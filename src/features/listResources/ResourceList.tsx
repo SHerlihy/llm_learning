@@ -1,4 +1,4 @@
-import { tagToResources } from "@/resources"
+import { Tag, tagToResources } from "@/resources"
 import { useSearch } from "@tanstack/react-router"
 import ResourceItem from "./ResourceItem"
 
@@ -7,7 +7,7 @@ const ResourceList = () => {
 
     if (!tags || Object.keys(tags).length < 1) { return null }
 
-    const tagOne = Object.keys(tags)[0]
+    const tagOne = Object.keys(tags)[0] as Tag
 
     const selectedResources = tagToResources[tagOne]
 

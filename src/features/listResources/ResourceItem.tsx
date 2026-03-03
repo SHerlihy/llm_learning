@@ -15,7 +15,17 @@ const ResourceItem = ({
     return (
         <Card>
             <h2>{resourceName}</h2>
-            <Link to={href}>{href}</Link>
+            <Link
+                to={href}
+                className={`
+                    link:text-blue-800
+                    visited:text-(--selected)
+                    hover:cursor-pointer
+                    active:text-green-800
+                `}
+            >
+                {href}
+            </Link>
             <p>{overview}</p>
         </Card>
     )
