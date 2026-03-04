@@ -32,18 +32,20 @@ const allResourcesByDoC: Array<Resource> = [
 ]
 .sort((a,b)=> b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
 
-export const tagToResources: Record<Tag, Array<Resource>> = {}
+export const allResourceNames: Set<string> = new Set()
+export const tagToNames: Partial<Record<Tag, Set<string>>> = {}
+export const nameToResource: Record<string, Resource> = {}
 
 allResourcesByDoC.forEach((resource) => {
+    allResourceNames.add(resource.resourceName)
+    nameToResource[resource.resourceName] = resource
+
     const tags = resource.tags
     tags.forEach((tag) => {
-        if (Object.hasOwn(tagToResources, tag)) {
-            const tagResources = tagToResources[tag]
-            tagResources.push(resource)
-
-            return
+        if (tagToNames[tag] === undefined) {
+            tagToNames[tag] = new Set()
         }
 
-        tagToResources[tag] = [resource]
+        tagToNames[tag].add(resource.resourceName)
     })
 })

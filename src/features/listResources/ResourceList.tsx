@@ -1,22 +1,33 @@
-import { Tag, tagToResources } from "@/resources"
+import { allResourceNames, nameToResource, Tag, tagToNames } from "@/resources"
 import { useSearch } from "@tanstack/react-router"
 import ResourceItem from "./ResourceItem"
 
 const ResourceList = () => {
-    const { tags } = useSearch({ from: '/' })
+    const { tags: tagsObj } = useSearch({ from: '/' })
 
-    if (!tags || Object.keys(tags).length < 1) { return null }
+    if (!tagsObj || Object.keys(tagsObj).length < 1) { return null }
 
-    const tagOne = Object.keys(tags)[0] as Tag
+    const tags = Object.keys(tagsObj) as Array<Tag>
 
-    const selectedResources = tagToResources[tagOne]
+    const allTaged = tags.map((tag) => {
+        if (tagToNames[tag] === undefined) { return new Set([]) }
 
-    if(selectedResources === undefined){return <p>No resources available for: {tagOne}</p>}
+        return tagToNames[tag]
+    }, [] as Array<Set<string>>)
+
+    const intersectionTaged = allTaged.reduce((acc, cur) => {
+        return acc.intersection(cur)
+    }, allResourceNames)
+
+    const resourceNames = Array.from(intersectionTaged)
+
+    if (resourceNames.length < 1) { return <p>No resources available for: {tags.join(", ")}</p> }
 
     return (
         <section>
-            {selectedResources.map((resource) => {
-                return (<ResourceItem key={resource.resourceName} resource={resource} />)
+            {resourceNames.map((resourceName) => {
+                const resource = nameToResource[resourceName]
+                return (<ResourceItem key={resourceName} resource={resource} />)
             })
             }
         </section>
