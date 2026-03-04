@@ -18,7 +18,7 @@ const ResourceItem = ({
             <Link
                 to={href}
                 className={`
-                    link:text-blue-800
+                    text-blue-600
                     visited:text-(--selected)
                     hover:cursor-pointer
                     active:text-green-800

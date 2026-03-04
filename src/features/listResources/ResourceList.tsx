@@ -2,6 +2,7 @@ import { allResourceNames, nameToResource, Tag, tagToNames } from "@/resources"
 import { useSearch } from "@tanstack/react-router"
 import ResourceItem from "./ResourceItem"
 
+//composite component to show feedback components
 const ResourceList = () => {
     const { tags: tagsObj } = useSearch({ from: '/' })
 
@@ -9,18 +10,22 @@ const ResourceList = () => {
 
     const tags = Object.keys(tagsObj) as Array<Tag>
 
-    const allTaged = tags.map((tag) => {
-        if (tagToNames[tag] === undefined) { return new Set([]) }
+    let intersectionTaged = allResourceNames
 
-        return tagToNames[tag]
-    }, [] as Array<Set<string>>)
+    tags.forEach((tag) => {
+        if (tagToNames[tag] === undefined) {
+            intersectionTaged = new Set([])
+            // feedback this tag has no resources
+            return
+        }
+        
+        const curIntersection = intersectionTaged.intersection(tagToNames[tag])
+        // if 0 size feedback cur tag led to no resources
 
-    const intersectionTaged = allTaged.reduce((acc, cur) => {
-        return acc.intersection(cur)
-    }, allResourceNames)
+        intersectionTaged = curIntersection
+    })
 
-    const resourceNames = Array.from(intersectionTaged)
-
+    const resourceNames= Array.from(intersectionTaged)
     if (resourceNames.length < 1) { return <p>No resources available for: {tags.join(", ")}</p> }
 
     return (
