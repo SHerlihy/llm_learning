@@ -1,4 +1,4 @@
-import { type Resource } from "@/resources"
+import { type Resource } from "@/content/resourceBuilder"
 
 import { Card } from "@/components/ui/card"
 import { Link } from "@tanstack/react-router"
@@ -18,7 +18,7 @@ const ResourceItem = ({
             <Link
                 to={href}
                 className={`
-                    link:text-blue-800
+                    text-blue-600
                     visited:text-(--selected)
                     hover:cursor-pointer
                     active:text-green-800
