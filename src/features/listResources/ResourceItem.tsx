@@ -13,7 +13,7 @@ const ResourceItem = ({
     const { resourceName, href, overview } = resource
 
     return (
-        <Card>
+        <Card className="m-2 p-4">
             <h2>{resourceName}</h2>
             <Link
                 to={href}
