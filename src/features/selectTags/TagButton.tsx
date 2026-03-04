@@ -36,8 +36,11 @@ const TagButton = ({
         <Button
             onClick={onClick}
             className={`
+                m-2
                 ${isSelected ? selectColor : unselectedColor}
                 hover:bg-(--hover)
+                hover:cursor-pointer
+                active:bg-green-800
             `}
         >
             {tag}

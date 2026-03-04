@@ -1,3 +1,4 @@
+import ResourceList from '@/features/listResources/ResourceList'
 import TagSelector from '@/features/selectTags/TagSelector'
 import { tags, TagsEnum } from '@/resources'
 import { createFileRoute, useRouter } from '@tanstack/react-router'
@@ -11,7 +12,7 @@ type ResourceTag = z.infer<typeof resourceTagSchema>
 
 export const Route = createFileRoute('/')({
     component: Home,
-  validateSearch: resourceTagSchema
+    validateSearch: resourceTagSchema
 })
 
 function Home() {
@@ -19,6 +20,9 @@ function Home() {
     const state = Route.useLoaderData()
 
     return (
-        <TagSelector tags={tags} />
+        <>
+            <TagSelector tags={tags} />
+            <ResourceList />
+        </>
     )
 }

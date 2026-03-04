@@ -37,7 +37,7 @@
     --sidebar-ring: oklch(0.708 0 0);
 
     --unselected: oklch(from var(--selected) l 0 h);
-    --selected: oklch(from var(--primary) l 0.1 120);
+    --selected: oklch(from var(--primary) calc(l + 0.2) 0.1 120);
     --hover: oklch(from var(--selected) l calc(c + 0.2) h);
 }
 
