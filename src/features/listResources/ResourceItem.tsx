@@ -1,4 +1,4 @@
-import { type Resource } from "@/resources"
+import { type Resource } from "@/content/resourceBuilder"
 
 import { Card } from "@/components/ui/card"
 import { Link } from "@tanstack/react-router"

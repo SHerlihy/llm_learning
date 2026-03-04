@@ -1,6 +1,6 @@
+import { tags, TagsEnum } from '@/content'
 import ResourceList from '@/features/listResources/ResourceList'
 import TagSelector from '@/features/selectTags/TagSelector'
-import { tags, TagsEnum } from '@/resources'
 import { createFileRoute, useRouter } from '@tanstack/react-router'
 import { z } from 'zod'
 

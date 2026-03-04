@@ -1,7 +1,6 @@
 import * as z from "zod";
-import { usingClaudeJR } from "./usingClaudeJR";
-import { loavableVAntigrav } from "./lovableVAntigrav";
 import { type Resource } from "./resourceBuilder";
+import { allResourcesByDoI } from "./resources";
 
 const vibeTags = [
     'chill'
@@ -10,24 +9,20 @@ const vibeTags = [
 export const tags = [
     ...vibeTags,
     'coding',
-    'prompting'
+    'prompting',
+    'kids',
+    'ethics'
 ] as const
 
 export type Tag = (typeof tags)[number]
 
 export const TagsEnum = z.enum(tags)
 
-const allResourcesByDoC: Array<Resource> = [
-    loavableVAntigrav,
-    usingClaudeJR
-]
-    .sort((a, b) => b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
-
 export const allResourceNames: Set<string> = new Set()
 export const tagToNames: Partial<Record<Tag, Set<string>>> = {}
 export const nameToResource: Record<string, Resource> = {}
 
-allResourcesByDoC.forEach((resource) => {
+allResourcesByDoI.forEach((resource) => {
     allResourceNames.add(resource.resourceName)
     nameToResource[resource.resourceName] = resource
 

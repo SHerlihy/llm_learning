@@ -1,6 +1,6 @@
-import { allResourceNames, nameToResource, Tag, tagToNames } from "@/resources"
 import { useSearch } from "@tanstack/react-router"
 import ResourceItem from "./ResourceItem"
+import { allResourceNames, nameToResource, Tag, tagToNames } from "@/content"
 
 //composite component to show feedback components
 const ResourceList = () => {

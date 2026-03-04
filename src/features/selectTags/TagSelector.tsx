@@ -1,4 +1,4 @@
-import { Tag, tags } from '@/resources'
+import { Tag, tags } from '@/content'
 import TagButton from './TagButton'
 import { useNavigate } from '@tanstack/react-router'
 
