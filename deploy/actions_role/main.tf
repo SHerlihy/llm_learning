@@ -23,17 +23,6 @@ variable "account_id" {
     default = "723738378505"
 }
 
-variable "user" {
-    type = string
-    // smart or dumb?
-    default = "actions"
-}
-
-resource "aws_iam_role" "actions" {
-  name                = "actions"
-  assume_role_policy  = data.aws_iam_policy_document.actions_assume.json
-}
-
 data "aws_iam_policy_document" "actions_assume" {
     statement {
         actions = [
@@ -59,21 +48,35 @@ data "aws_iam_policy_document" "actions_assume" {
             ]
         }
     }
+}
 
-    statement {
-        actions = [
-            "st:AssumeRole"
-        ]
-        
-        principals {
-            type = "AWS"
-            indentifiers = [
-                "arn:aws:iam::${var.account_id}:user/${var.user}"
-            ]
-        }
-    }
+resource "aws_iam_role" "actions" {
+  name_prefix                = "actions"
+  assume_role_policy  = data.aws_iam_policy_document.actions_assume.json
 }
 
 data "aws_iam_policy_document" "provision_static_site" {
-    statement
+    statement {
+      actions = [
+        "s3:*",
+        "cloudfront:*",
+        "acm:*",
+        "route53:*"
+      ]
+
+      resources = ["*"]
+    }
+}
+
+resource "aws_iam_policy" "provision_static_site" {
+  policy      = data.aws_iam_policy_document.provision_static_site.json
+}
+
+resource "aws_iam_role_policy_attachment" "provision_static_site" {
+  role       = aws_iam_role.actions.name
+  policy_arn = aws_iam_policy.provision_static_site.arn
+}
+
+output "arn" {
+  value = aws_iam_role.actions.arn
 }
