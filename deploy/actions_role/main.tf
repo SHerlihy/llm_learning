@@ -58,10 +58,7 @@ resource "aws_iam_role" "actions" {
 data "aws_iam_policy_document" "provision_static_site" {
     statement {
       actions = [
-        "s3:*",
-        "cloudfront:*",
-        "acm:*",
-        "route53:*"
+        "s3:*"
       ]
 
       resources = ["*"]

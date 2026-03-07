@@ -23,25 +23,8 @@ variable "bucket_regional_domain_name" {
     type = string
 }
 
-variable "domain_name" {
-    type = string
-}
-
-variable "cert_arn" {
-    type = string
-}
-
-variable "validation_record_fqdns" {
-  type = list(string)
-}
-
 locals {
     disabled_cache = "4135ea2d-6df8-44a3-9df3-4b5a84be39ad"
-}
-
-resource "aws_acm_certificate_validation" "ssl" {
-  certificate_arn         = var.cert_arn
-  validation_record_fqdns = var.validation_record_fqdns
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -51,16 +34,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     origin_id                = var.uuid
   }
 
-  aliases = [
-    var.domain_name
-  ]
-
   enabled             = true
   is_ipv6_enabled     = true
 
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate_validation.ssl.certificate_arn
-    ssl_support_method = "sni-only"
+    cloudfront_default_certificate = true
   }
 
   default_cache_behavior {
@@ -75,7 +53,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   price_class = "PriceClass_100"
 
-    default_root_object = "index.html"
+  default_root_object = "index.html"
 
   restrictions {
     geo_restriction {

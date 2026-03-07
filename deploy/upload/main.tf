@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "sherlihydtcom"
+  profile = "llm_learning"
 }
 
 variable "bucket_id" {
