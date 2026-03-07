@@ -7,7 +7,7 @@ on:
 
 env:
   REGION: eu-west-2
-  ROLE_ARN: 
+  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260306090927027800000002
 
 jobs:
   AWS_Provision:
@@ -44,7 +44,6 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
           cd ./application
           npm install
           cd ..
@@ -65,7 +64,11 @@ jobs:
           echo -e "region = $REGION\n" >> ~/.aws/config
 
       - name: Deploy changes
-        run: npm run replace_prod_files
+        run: |
+          cd ./deploy/upload
+          terraform init
+          terraform apply --auto-approve
+          cd ../../
 
       - name: Push tf state
         run: |
