@@ -59,7 +59,7 @@ jobs:
           aws sts assume-role-with-web-identity \
             --role-arn ${{ env.ROLE_ARN }} \
             --role-session-name "test-session" \
-            --web-identity-token "$(aws sts get-caller-identity)"
+            --web-identity-token "$(aws sts get-web-identity-token)"
 
       - name: Deploy changes
         run: |
