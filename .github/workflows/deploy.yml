@@ -56,7 +56,7 @@ jobs:
 
       - name: Deploy changes
         run: |
-          WEB_IDENTITY_TOKEN=$(aws sts get-web-identity-token)
+          WEB_IDENTITY_TOKEN=$(aws sts get-web-identity-token --audience "sts.amazonaws.com" --signing-algorithm "ES384")
           echo $WEB_IDENTITY_TOKEN
           cd ./deploy/upload
           terraform init
