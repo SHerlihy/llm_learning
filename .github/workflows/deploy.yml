@@ -59,7 +59,7 @@ jobs:
           WEB_IDENTITY_TOKEN=$(aws sts get-caller-identity)
           cd ./deploy/upload
           terraform init
-          terraform apply -auto-approve -var 'actions_role_arn=$ROLE_ARN' -var 'web_identity_token=$WEB_IDENTITY_TOKEN'
+          terraform apply -auto-approve -var 'actions_role_arn=${{ env.ROLE_ARN }}' -var 'web_identity_token=$WEB_IDENTITY_TOKEN'
           cd ../../
 
       - name: Push tf state

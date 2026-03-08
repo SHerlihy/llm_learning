@@ -17,7 +17,7 @@ variable "web_identity_token" {
 
 provider "aws" {
   assume_role_with_web_identity {
-    role_arn                = var.actions_role_arn
+    role_arn = var.actions_role_arn
     web_identity_token = var.web_identity_token
   }
 }
