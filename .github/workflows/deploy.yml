@@ -54,16 +54,9 @@ jobs:
           npm run build
           cd ..
 
-      - name: ts token
-        run: |
-          aws sts assume-role-with-web-identity \
-            --role-arn ${{ env.ROLE_ARN }} \
-            --role-session-name "test-session" \
-            --web-identity-token "$(aws sts get-web-identity-token)"
-
       - name: Deploy changes
         run: |
-          WEB_IDENTITY_TOKEN=$(aws sts get-caller-identity)
+          WEB_IDENTITY_TOKEN=$(aws sts get-web-identity-token)
           echo $WEB_IDENTITY_TOKEN
           cd ./deploy/upload
           terraform init
