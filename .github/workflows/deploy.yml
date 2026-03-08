@@ -7,7 +7,7 @@ on:
 
 env:
   REGION: eu-west-2
-  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260308170429382700000002
+  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260308183904013900000001
 
 jobs:
   AWS_Provision:
@@ -54,20 +54,11 @@ jobs:
           npm run build
           cd ..
 
-      - name: AWS user creds
-        run: |
-          mkdir ~/.aws
-          echo -e "[actions]\n" > ~/.aws/credentials
-          echo -e "aws_access_key_id = ${{secrets.AWS_ACCESS_KEY_ID}}\n" >> ~/.aws/credentials
-          echo -e "aws_secret_access_key = ${{secrets.AWS_SECRET_ACCESS_KEY}}\n" >> ~/.aws/credentials
-          echo -e "[actions]\n" > ~/.aws/config
-          echo -e "region = $REGION\n" >> ~/.aws/config
-
       - name: Deploy changes
         run: |
           cd ./deploy/upload
           terraform init
-          terraform apply --auto-approve
+          terraform apply -auto-approve -var 'actions_role_arn=$ROLE_ARN'
           cd ../../
 
       - name: Push tf state

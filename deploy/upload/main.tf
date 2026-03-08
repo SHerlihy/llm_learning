@@ -7,8 +7,14 @@ terraform {
   }
 }
 
+variable "actions_role_arn" {
+  type = string
+}
+
 provider "aws" {
-  profile = "actions"
+  assume_role_with_web_identity {
+    role_arn                = var.actions_role_arn
+  }
 }
 
 variable "bucket_id" {

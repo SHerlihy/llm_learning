@@ -15,12 +15,10 @@ provider "aws" {
 
 variable "branch" {
     type = string
-    default = "repo:SHerlihy/llm_learning:ref:refs/heads/main"
 }
 
 variable "account_id" {
     type = string
-    default = "723738378505"
 }
 
 data "aws_iam_policy_document" "actions_assume" {
@@ -51,7 +49,7 @@ data "aws_iam_policy_document" "actions_assume" {
 }
 
 resource "aws_iam_role" "actions" {
-  name_prefix                = "actions"
+  name_prefix = "actions"
   assume_role_policy  = data.aws_iam_policy_document.actions_assume.json
 }
 
