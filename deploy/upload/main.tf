@@ -7,19 +7,22 @@ terraform {
   }
 }
 
-variable "actions_role_arn" {
+variable "region" {
   type = string
 }
 
-variable "web_identity_token" {
+variable "access_key" {
+  type = string
+}
+
+variable "secret_key" {
   type = string
 }
 
 provider "aws" {
-  assume_role_with_web_identity {
-    role_arn = var.actions_role_arn
-    web_identity_token = var.web_identity_token
-  }
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
 }
 
 variable "bucket_id" {

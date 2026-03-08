@@ -21,10 +21,12 @@ jobs:
     
     steps:
       - name: Configure AWS Credentials
+        id: creds
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
           role-to-assume: ${{ env.ROLE_ARN }}
           aws-region: ${{ env.REGION }}
+          output-credentials: true
 
       - name: Checkout repo
         uses: actions/checkout@v5
@@ -56,11 +58,9 @@ jobs:
 
       - name: Deploy changes
         run: |
-          WEB_IDENTITY_TOKEN=$(aws sts get-web-identity-token --audience "sts.amazonaws.com" --signing-algorithm "ES384")
-          echo $WEB_IDENTITY_TOKEN
           cd ./deploy/upload
           terraform init
-          terraform apply -auto-approve -var 'actions_role_arn=${{ env.ROLE_ARN }}' -var 'web_identity_token=$WEB_IDENTITY_TOKEN'
+          terraform apply -auto-approve -var 'region=${{ env.REGION }}' -var 'access_key=${{ steps.creds.outputs.aws-access-key-id }}' -var 'secret_key=${{ steps.creds.outputs.aws-secret-access-key }}'
           cd ../../
 
       - name: Push tf state
