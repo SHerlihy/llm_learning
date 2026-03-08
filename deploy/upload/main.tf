@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "aws" {
-  profile = "llm_learning"
+  profile = "actions"
 }
 
 variable "bucket_id" {

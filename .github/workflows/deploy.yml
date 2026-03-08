@@ -23,7 +23,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v6.0.0
         with:
-          role-to-assume: arn:aws:iam::723738378505:role/actions20260308170429382700000002
+          role-to-assume: $ROLE_ARN
           aws-region: us-east-1
 
       - name: Checkout repo
