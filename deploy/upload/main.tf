@@ -11,9 +11,14 @@ variable "actions_role_arn" {
   type = string
 }
 
+variable "web_identity_token" {
+  type = string
+}
+
 provider "aws" {
   assume_role_with_web_identity {
     role_arn                = var.actions_role_arn
+    web_identity_token = var.web_identity_token
   }
 }
 
