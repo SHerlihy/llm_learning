@@ -24,7 +24,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: $ROLE_ARN
-          aws-region: $REGION
+          aws-region: us-east-1
 
       - name: Checkout repo
         uses: actions/checkout@v5
