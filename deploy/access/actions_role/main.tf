@@ -21,6 +21,10 @@ variable "account_id" {
     type = string
 }
 
+variable "bucket_arn" {
+  type = string
+}
+
 data "aws_iam_policy_document" "actions_assume" {
     statement {
         principals {
@@ -59,7 +63,10 @@ data "aws_iam_policy_document" "provision_static_site" {
         "s3:*"
       ]
 
-      resources = ["*"]
+      resources = [
+        "${var.bucket_arn}",
+        "${var.bucket_arn}/*"
+      ]
     }
 }
 

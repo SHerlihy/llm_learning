@@ -7,7 +7,7 @@ on:
 
 env:
   REGION: eu-west-2
-  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260308183904013900000001
+  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260308212323736100000002
 
 jobs:
   AWS_Provision:
