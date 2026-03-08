@@ -25,6 +25,13 @@ variable "account_id" {
 
 data "aws_iam_policy_document" "actions_assume" {
     statement {
+        principals {
+            type = "Federated"
+            identifiers = [
+                "arn:aws:iam::${var.account_id}:oidc-provider/token.actions.githubusercontent.com"
+            ]
+        }
+
         actions = [
             "sts:AssumeRoleWithWebIdentity"
         ]
@@ -39,13 +46,6 @@ data "aws_iam_policy_document" "actions_assume" {
             test = "ForAnyValue:StringEquals"
             variable = "token.actions.githubusercontent.com:sub"
             values = [var.branch]
-        }
-
-        principals {
-            type = "Federated"
-            identifiers = [
-                "arn:aws:iam::${var.account_id}:oidc-provider/token.actions.githubusercontent.com"
-            ]
         }
     }
 }

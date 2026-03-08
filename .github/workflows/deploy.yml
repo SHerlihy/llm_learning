@@ -7,7 +7,7 @@ on:
 
 env:
   REGION: eu-west-2
-  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260306090927027800000002
+  ROLE_ARN: arn:aws:iam::723738378505:role/actions20260308170429382700000002
 
 jobs:
   AWS_Provision:
@@ -21,7 +21,7 @@ jobs:
     
     steps:
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: $ROLE_ARN
           aws-region: us-east-1
