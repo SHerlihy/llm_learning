@@ -26,7 +26,6 @@ jobs:
         with:
           role-to-assume: ${{ env.ROLE_ARN }}
           aws-region: ${{ env.REGION }}
-          output-credentials: true
 
       - name: Checkout repo
         uses: actions/checkout@v5
@@ -60,7 +59,7 @@ jobs:
         run: |
           cd ./deploy/upload
           terraform init
-          terraform apply -auto-approve -var 'region=${{ env.REGION }}' -var 'access_key=${{ steps.creds.outputs.aws-access-key-id }}' -var 'secret_key=${{ steps.creds.outputs.aws-secret-access-key }}'
+          terraform apply -auto-approve -var 'region=${{ env.REGION }}'
           cd ../../
 
       - name: Push tf state
