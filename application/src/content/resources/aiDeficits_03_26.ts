@@ -6,6 +6,7 @@ const aiDeficits_09_26 = new ResourceBuilder("This Just Exposed the Biggest Lie 
 .setOverview("A light exploration of issues such as loss of context in real chats and developer productivity")
 .setTag("chill")
 .setTag("coding")
+.setTag("prompting")
 .build()
 
 export default aiDeficits_09_26
