@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { type Resource } from "./resourceBuilder";
-import { allResourcesByDoI } from "./resources";
+import { allResources } from "./resources";
 
 const vibeTags = [
     'chill'
@@ -15,23 +15,31 @@ export const tags = [
 ] as const
 
 export type Tag = (typeof tags)[number]
+export type NameToResourceByDoI = {
+    [key: string]: Resource
+}
 
 export const TagsEnum = z.enum(tags)
 
 export const allResourceNames: Set<string> = new Set()
-export const tagToNames: Partial<Record<Tag, Set<string>>> = {}
+
+export const tagToNamesByDoI: Partial<Record<Tag, Set<string>>> = {}
 export const nameToResource: Record<string, Resource> = {}
 
-allResourcesByDoI.forEach((resource) => {
-    allResourceNames.add(resource.resourceName)
-    nameToResource[resource.resourceName] = resource
+allResources
+    .sort((a, b) => a.dateOfInclusion.getTime() - b.dateOfInclusion.getTime())
+    .forEach((resource) => {
+        const { resourceName, tags } = resource
 
-    const tags = resource.tags
-    tags.forEach((tag) => {
-        if (tagToNames[tag] === undefined) {
-            tagToNames[tag] = new Set()
-        }
+        allResourceNames.add(resourceName)
 
-        tagToNames[tag].add(resource.resourceName)
+        nameToResource[resourceName] = resource
+
+        tags.forEach((tag) => {
+            if (tagToNamesByDoI[tag] === undefined) {
+                tagToNamesByDoI[tag] = new Set()
+            }
+
+            tagToNamesByDoI[tag].add(resource.resourceName)
+        })
     })
-})
