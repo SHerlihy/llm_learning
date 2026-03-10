@@ -1,6 +1,6 @@
 import { useSearch } from "@tanstack/react-router"
 import ResourceItem from "./ResourceItem"
-import { allResourceNames, nameToResource, Tag, tagToNames } from "@/content"
+import { allResourceNames, nameToResource, Tag, tagToNamesByDoI } from "@/content"
 
 //composite component to show feedback components
 const ResourceList = () => {
@@ -13,13 +13,13 @@ const ResourceList = () => {
     let intersectionTaged = allResourceNames
 
     tags.forEach((tag) => {
-        if (tagToNames[tag] === undefined) {
+        if (tagToNamesByDoI[tag] === undefined) {
             intersectionTaged = new Set([])
             // feedback this tag has no resources
             return
         }
         
-        const curIntersection = intersectionTaged.intersection(tagToNames[tag])
+        const curIntersection = intersectionTaged.intersection(tagToNamesByDoI[tag])
         // if 0 size feedback cur tag led to no resources
 
         intersectionTaged = curIntersection

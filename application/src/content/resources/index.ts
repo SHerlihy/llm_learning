@@ -11,7 +11,7 @@ import roadmap_roadmap from "./roadmap_roadmap";
 import teachKidsAi from "./teachKidsAi";
 import usingClaudeJR from "./usingClaudeJR";
 
-export const allResourcesByDoI: Array<Resource> = [
+export const allResources: Array<Resource> = [
     ethicsOpenAI,
     aiLifecycleTrainedToApplication_AWS,
     aiLifecycleZeroToTrained_IBM,
@@ -24,5 +24,3 @@ export const allResourcesByDoI: Array<Resource> = [
     teachKidsAi,
     onlineSafetyAndAi
 ]
-    .sort((a, b) => b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
-
