@@ -29,7 +29,7 @@ export const tagToNamesByDoI: Partial<Record<Tag, Set<string>>> = {}
 export const nameToResource: Record<string, Resource> = {}
 
 allResources
-    .sort((a, b) => a.dateOfInclusion.getTime() - b.dateOfInclusion.getTime())
+    .sort((a, b)=> b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
     .forEach((resource) => {
         const { resourceName, tags } = resource
 
