@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder"
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const loavableVAntigrav = new ResourceBuilder('Lovable V Antigravity by Rajnish Kumar Sharma')
 .setDateOfInclusion(new Date(2026, 3, 3))

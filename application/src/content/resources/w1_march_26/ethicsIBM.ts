@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const ethicsIBM = new ResourceBuilder("IBM\'s Point of View on AI Ethics by IBM")
 .setHref("https://www.ibm.com/think/topics/ai-ethics")

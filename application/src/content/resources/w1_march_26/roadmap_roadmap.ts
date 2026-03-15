@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const roadmap_roadmap = new ResourceBuilder("AI Engineer Roadmap by roadmap.sh")
 .setHref("https://roadmap.sh/ai-engineer")

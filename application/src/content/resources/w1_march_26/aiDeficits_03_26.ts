@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const aiDeficits_09_26 = new ResourceBuilder("This Just Exposed the Biggest Lie in AI — Every Model, Every Company | Microslop Chronicles Ep. 5 by Olive Badger")
 .setHref("https://youtu.be/ELLEo1ngDB8?si=LkSZOhi6i537G4KX")

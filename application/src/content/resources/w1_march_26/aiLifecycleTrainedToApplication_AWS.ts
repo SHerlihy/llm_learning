@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const aiLifecycleTrainedToApplication_AWS = new ResourceBuilder("AI Lifecycle - Trained to Application by AWS")
 .setHref("https://docs.aws.amazon.com/wellarchitected/latest/generative-ai-lens/generative-ai-lifecycle.html")

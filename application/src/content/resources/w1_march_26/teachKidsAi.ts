@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const teachKidsAi = new ResourceBuilder('Teach teens computing: Machine learning and AI by Raspberry Pi')
 .setOverview('Discover machine learning and how it works, and train your own AI using free online tools.')

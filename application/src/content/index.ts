@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { type Resource } from "./resourceBuilder";
-import { allResources } from "./resources";
+import { allResources } from "@/content/resources";
 
 const vibeTags = [
     'chill'
@@ -11,7 +11,9 @@ export const tags = [
     'coding',
     'prompting',
     'kids',
-    'ethics'
+    'ethics',
+    'agent',
+    'security'
 ] as const
 
 export type Tag = (typeof tags)[number]

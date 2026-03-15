@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const ethicsOpenAI = new ResourceBuilder("Open AI Ethical Concerns")
 .setHref("https://openai.com/safety/")

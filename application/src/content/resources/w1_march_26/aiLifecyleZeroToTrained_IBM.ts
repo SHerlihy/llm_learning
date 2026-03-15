@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const aiLifecycleZeroToTrained_IBM = new ResourceBuilder("AI Lifecyle Zero to Trained by IBM")
 .setHref("https://www.ibm.com/think/topics/ai-lifecycle")
