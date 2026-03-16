@@ -1,6 +1,6 @@
 import * as z from "zod";
 import { type Resource } from "./resourceBuilder";
-import { allResources } from "./resources";
+import { allResources } from "@/content/resources";
 
 const vibeTags = [
     'chill'
@@ -11,7 +11,9 @@ export const tags = [
     'coding',
     'prompting',
     'kids',
-    'ethics'
+    'ethics',
+    'agent',
+    'security'
 ] as const
 
 export type Tag = (typeof tags)[number]
@@ -27,7 +29,7 @@ export const tagToNamesByDoI: Partial<Record<Tag, Set<string>>> = {}
 export const nameToResource: Record<string, Resource> = {}
 
 allResources
-    .sort((a, b) => a.dateOfInclusion.getTime() - b.dateOfInclusion.getTime())
+    .sort((a, b)=> b.dateOfInclusion.getTime() - a.dateOfInclusion.getTime())
     .forEach((resource) => {
         const { resourceName, tags } = resource
 

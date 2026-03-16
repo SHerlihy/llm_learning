@@ -1,4 +1,4 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const usingClaudeJR = new ResourceBuilder('Using Claude by Jag Raheel')
 .setDateOfInclusion(new Date(2026, 2, 28))

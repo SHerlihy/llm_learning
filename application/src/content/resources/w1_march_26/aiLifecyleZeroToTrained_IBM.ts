@@ -1,9 +1,9 @@
-import { ResourceBuilder } from "../resourceBuilder";
+import { ResourceBuilder } from "@/content/resourceBuilder"
 
 const aiLifecycleZeroToTrained_IBM = new ResourceBuilder("AI Lifecyle Zero to Trained by IBM")
 .setHref("https://www.ibm.com/think/topics/ai-lifecycle")
 .setOverview("An overview of the stages to create a trained AI with links to deeper learning.")
-.setDateOfInclusion(new Date(9, 3, 2026))
+.setDateOfInclusion(new Date(2026, 3, 9))
 .setTag("chill")
 .build()
 
