@@ -17,7 +17,7 @@ const AllButton = () => {
     const { tags } = useSearch({ from: '/' })
 
     useEffect(() => {
-        if (!tags) {
+        if (!tags || Object.keys(tags).length < 1) {
             setSelected(true)
             return
         } else {
