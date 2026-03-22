@@ -1,6 +1,7 @@
 import { Tag, tags } from '@/content'
 import TagButton from './TagButton'
 import { useNavigate } from '@tanstack/react-router'
+import AllButton from './AllButton'
 
 type Props = {
     tags: typeof tags
@@ -31,6 +32,7 @@ const TagSelector = ({
 
     return (
         <article>
+            <AllButton />
             {tags.map((tag) => (<TagButton key={tag} tag={tag} onClick={() => { handleClick(tag) }} />))}
         </article>
     )

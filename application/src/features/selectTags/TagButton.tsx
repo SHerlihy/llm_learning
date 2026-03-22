@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useSearch } from '@tanstack/react-router'
-import { Button } from '@/components/ui/button'
 import { Tag } from '@/content'
-
-const unselectedColor = 'bg-(--unselected)'
+import TagButtonView from './TagButtonView'
 
 type Props = {
     tag: Tag
-    selectColor?: string
 }
     & Pick<React.ComponentProps<"button">, "onClick">
 
 const TagButton = ({
     tag,
-    selectColor = 'bg-(--selected)',
     onClick
 }: Props) => {
     const [isSelected, setSelected] = useState(false)
     const { tags } = useSearch({ from: '/' })
 
     useEffect(() => {
-        if(!tags){
+        if (!tags) {
             setSelected(false)
             return
         }
@@ -33,18 +29,11 @@ const TagButton = ({
     }, [tag, tags])
 
     return (
-        <Button
+        <TagButtonView
+            tag={tag}
+            isSelected={isSelected}
             onClick={onClick}
-            className={`
-                m-2
-                ${isSelected ? selectColor : unselectedColor}
-                hover:bg-(--hover)
-                hover:cursor-pointer
-                active:bg-green-800
-            `}
-        >
-            {tag}
-        </Button>
+        />
     )
 }
 
