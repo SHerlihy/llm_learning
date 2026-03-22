@@ -1,15 +1,8 @@
 import { useSearch } from "@tanstack/react-router"
-import ResourceItem from "./ResourceItem"
-import { allResourceNames, nameToResource, Tag, tagToNamesByDoI } from "@/content"
+import { allResourceNames, Tag, tagToNamesByDoI } from "@/content"
+import ResourceListView from "./ResourceListView"
 
-//composite component to show feedback components
-const ResourceList = () => {
-    const { tags: tagsObj } = useSearch({ from: '/' })
-
-    if (!tagsObj || Object.keys(tagsObj).length < 1) { return null }
-
-    const tags = Object.keys(tagsObj) as Array<Tag>
-
+const getResourceIntersectionFromTags = (tags: Array<Tag>) => {
     let intersectionTaged = allResourceNames
 
     tags.forEach((tag) => {
@@ -18,24 +11,31 @@ const ResourceList = () => {
             // feedback this tag has no resources
             return
         }
-        
+
         const curIntersection = intersectionTaged.intersection(tagToNamesByDoI[tag])
         // if 0 size feedback cur tag led to no resources
 
         intersectionTaged = curIntersection
     })
 
-    const resourceNames= Array.from(intersectionTaged)
-    if (resourceNames.length < 1) { return <p>No resources available for: {tags.join(", ")}</p> }
+    return intersectionTaged
+}
+
+//composite component to show feedback components
+const ResourceList = () => {
+    const { tags: tagsObj } = useSearch({ from: '/' })
+
+    const tags: Array<Tag> = tagsObj ? Object.keys(tagsObj) as Array<Tag> : []
+
+    const intersectionTaged = getResourceIntersectionFromTags(tags)
+
+    const resourceNames = Array.from(intersectionTaged)
 
     return (
-        <section>
-            {resourceNames.map((resourceName) => {
-                const resource = nameToResource[resourceName]
-                return (<ResourceItem key={resourceName} resource={resource} />)
-            })
-            }
-        </section>
+        <ResourceListView
+            tags={tags}
+            resourceNames={resourceNames}
+        />
     )
 }
 
