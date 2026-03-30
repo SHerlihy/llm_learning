@@ -1,3 +1,4 @@
+import awsPromptCaching from "./awsPromptCaching";
 import claudeRateLimits from "./claudeRateLimits";
 import costRagPromptFine from "./costRagPromptFine";
 import googleCompressionAlgo from "./googleCompressionAlgo";
@@ -7,5 +8,6 @@ export const w4March26Resources = [
     costRagPromptFine,
     soraFinancials,
     googleCompressionAlgo,
-    claudeRateLimits
+    claudeRateLimits,
+    awsPromptCaching
 ]
