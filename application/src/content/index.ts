@@ -14,7 +14,9 @@ export const tags = [
     'ethics',
     'agent',
     'security',
-    'art'
+    'art',
+    'cost',
+    'commerce'
 ] as const
 
 export type Tag = (typeof tags)[number]
