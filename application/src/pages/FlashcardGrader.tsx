@@ -10,14 +10,22 @@ const QUERY_URL = "https://yobowczw08.execute-api.eu-west-2.amazonaws.com/main/f
 
 const { postQuery, demarshall, abortQuery } = new QueryControl(QUERY_URL)
 
-const Flashcard = () => {
+type Props = {
+    keyword: string,
+    definition: string
+}
+
+const FlashcardGrader = ({
+    keyword,
+    definition
+} : Props) => {
     const [chat, setChat] = useState<string[]>([])
     const chatBoxRef = useRef<HTMLDivElement>(null)
 
     const handlePostQuery = async (query: string) => {
         const [error, response] = await catchError(postQuery({
-            keyword: 'inference',
-            definition: 'a conclusion reached on the basis of evidence and reasoning.',
+            keyword: keyword,
+            definition: definition,
             submission: query
         }))
 
@@ -80,4 +88,4 @@ const Flashcard = () => {
     )
 }
 
-export default Flashcard
+export default FlashcardGrader

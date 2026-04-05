@@ -43,8 +43,7 @@ class QueryControl implements IQueryControl {
 
     queryRequest = async (requestVariables: FlashcardRequestVariables) => {
         const body = JSON.stringify(requestVariables)
-        console.log("body")
-        console.log(body)
+
         return await fetch(this.postUrl, {
             method: "POST",
             headers: {

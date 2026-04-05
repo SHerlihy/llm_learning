@@ -8,6 +8,7 @@ const vibeTags = [
 
 export const tags = [
     ...vibeTags,
+    'remember',
     'coding',
     'prompting',
     'kids',
