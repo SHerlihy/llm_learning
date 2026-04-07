@@ -31,9 +31,11 @@ const FlashcardSelection = ({
     flashcardsArr
 }: Props) => {
     const [flashcardIdx, setFlashcardIdx] = useState(0)
+    const [reveal, setReveal] = useState(false)
 
     const goBack = () => {
         setFlashcardIdx((prev) => {
+            setReveal(false)
             if (prev < 1) {
                 return flashcardsArr.length - 1
             }
@@ -44,6 +46,7 @@ const FlashcardSelection = ({
 
     const goForward = () => {
         setFlashcardIdx((prev) => {
+            setReveal(false)
             const nextIdx = prev + 1
             if (nextIdx > flashcardsArr.length - 1) {
                 return 0
@@ -53,12 +56,25 @@ const FlashcardSelection = ({
         })
     }
 
+    const toggleAnswer = () => {
+        setReveal((prev) => !prev)
+    }
+
     return (
         <article>
             <h2>
                 {flashcardsArr[flashcardIdx][0]}
             </h2>
+            <p
+                className={`
+${reveal && 'visible'}
+${!reveal && 'invisible'}
+`}
+            >
+                {flashcardsArr[flashcardIdx][1]}
+            </p>
             <section>
+                
                 <FlashcardGrader
                     keyword={flashcardsArr[flashcardIdx][0]}
                     definition={flashcardsArr[flashcardIdx][1]}
@@ -71,6 +87,11 @@ const FlashcardSelection = ({
                     onClick={goBack}
                 >
                     Back
+                </Button>
+                <Button
+                    onClick={toggleAnswer}
+                >
+                    {reveal ? 'hide' : 'show'}
                 </Button>
                 <Button
                     onClick={goForward}
