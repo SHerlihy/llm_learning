@@ -79,8 +79,7 @@ ${!reveal && 'invisible'}
                 </p>
             </section>
             <hr/>
-                <section className='grow'>
-
+                <section className='grow min-h-0'>
                     <FlashcardGrader
                         keyword={flashcardsArr[flashcardIdx][0]}
                         definition={flashcardsArr[flashcardIdx][1]}

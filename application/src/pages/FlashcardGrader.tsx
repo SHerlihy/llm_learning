@@ -59,7 +59,7 @@ const FlashcardGrader = ({
             >
                 <div
                     ref={chatBoxRef}
-                    className="min-h-full whitespace-pre-line flex flex-col justify-center align-center">
+                    className="min-h-full whitespace-pre-line flex flex-col justify-center align-center overflow-scroll">
                     {chat.map((utter, i) => <div key={i}>
                         &nbsp;
                         <hr />
