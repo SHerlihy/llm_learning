@@ -61,44 +61,52 @@ const FlashcardSelection = ({
     }
 
     return (
-        <article>
-            <h2>
-                {flashcardsArr[flashcardIdx][0]}
-            </h2>
-            <p
-                className={`
+        <article className='h-full w-full p-4 flex flex-col'>
+            <section className='flex flex-col items-center'>
+                <p>
+                    The keyword is:
+                </p>
+                <h2>
+                    {flashcardsArr[flashcardIdx][0]}
+                </h2>
+                <p
+                    className={`
 ${reveal && 'visible'}
 ${!reveal && 'invisible'}
 `}
-            >
-                {flashcardsArr[flashcardIdx][1]}
-            </p>
-            <section>
-                
-                <FlashcardGrader
-                    keyword={flashcardsArr[flashcardIdx][0]}
-                    definition={flashcardsArr[flashcardIdx][1]}
-                />
+                >
+                    {flashcardsArr[flashcardIdx][1]}
+                </p>
             </section>
-            <section
-                className='flex'
-            >
-                <Button
-                    onClick={goBack}
+            <hr/>
+                <section className='grow'>
+
+                    <FlashcardGrader
+                        keyword={flashcardsArr[flashcardIdx][0]}
+                        definition={flashcardsArr[flashcardIdx][1]}
+                    />
+                </section>
+                <section
+                    className='flex flex-col items-center'
                 >
-                    Back
-                </Button>
-                <Button
-                    onClick={toggleAnswer}
-                >
-                    {reveal ? 'hide' : 'show'}
-                </Button>
-                <Button
-                    onClick={goForward}
-                >
-                    Next
-                </Button>
-            </section>
+                    <div className='flex'>
+                        <Button
+                            onClick={goBack}
+                        >
+                            Back
+                        </Button>
+                        <Button
+                            onClick={toggleAnswer}
+                        >
+                            {reveal ? 'hide' : 'show'}
+                        </Button>
+                        <Button
+                            onClick={goForward}
+                        >
+                            Next
+                        </Button>
+                    </div>
+                </section>
         </article>
     )
 }
