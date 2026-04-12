@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react"
 
 const queryClient = new QueryClient()
 
-const QUERY_URL = "https://yobowczw08.execute-api.eu-west-2.amazonaws.com/main/flashcard/"
+const QUERY_URL = "https://yobowczw08.execute-api.eu-west-2.amazonaws.com/prod/flashcard"
+const QUERY_VERSION = "4"
 
 const { postQuery, demarshall, abortQuery } = new QueryControl(QUERY_URL)
 
@@ -26,7 +27,8 @@ const FlashcardGrader = ({
         const [error, response] = await catchError(postQuery({
             keyword: keyword,
             definition: definition,
-            submission: query
+            submission: query,
+            version: QUERY_VERSION
         }))
 
         if (error) {

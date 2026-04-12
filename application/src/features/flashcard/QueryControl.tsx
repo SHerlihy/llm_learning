@@ -3,6 +3,7 @@ type FlashcardRequestVariables = {
     keyword: string,
     definition: string,
     submission: string
+    version?: string
 }
 
 interface IQueryControl {
