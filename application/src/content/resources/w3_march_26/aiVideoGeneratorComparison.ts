@@ -6,6 +6,7 @@ const aiVideoGeneratorComparison = new ResourceBuilder('Kling 3.0 vs Seedance 2 
 .setOverview('Video comparing vidoes created by major AI video generators across multiple prompts.')
 .setTag('chill')
 .setTag('art')
+.setTag('best for')
 .build()
 
 export default aiVideoGeneratorComparison

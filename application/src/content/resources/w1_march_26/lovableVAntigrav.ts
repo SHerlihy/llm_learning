@@ -5,6 +5,7 @@ const loavableVAntigrav = new ResourceBuilder('Lovable V Antigravity by Rajnish 
 .setOverview('Comparison of AI code development tools.')
 .setHref('https://medium.com/@torajnish/ai-powered-development-lovable-ai-or-google-antigravity-2746b277e484')
 .setTag('coding')
+.setTag('best for')
 .build()
 
 export default loavableVAntigrav
