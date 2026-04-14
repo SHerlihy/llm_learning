@@ -5,6 +5,16 @@ const aiLifecycleZeroToTrained_IBM = new ResourceBuilder("AI Lifecyle Zero to Tr
 .setOverview("An overview of the stages to create a trained AI with links to deeper learning.")
 .setDateOfInclusion(new Date(2026, 3, 9))
 .setTag("chill")
+.setFlashcard('AI Lifecycle', 'A structured, iterative process of planning, training, deploying, and maintaining AI systems, encompassing everything from initial problem definition to active use in a real-world workflow.')
+.setFlashcard('MLOps (Machine Learning Operations)', 'A discipline focused on systematic approaches to AI development, governance, and maintenance to ensure the sustained efficacy of dynamic AI systems.')
+.setFlashcard('Feature Engineering', 'A prominent part of the data preparation process where raw data is preprocessed and structured to make it suitable for machine learning pipelines.')
+.setFlashcard('Overfitting', 'The machine learning equivalent of "teaching to the test," where a model achieves high accuracy on its training data but fails to generalize well to new, unseen data.')
+.setFlashcard('Model Drift', 'The phenomenon where a deployed model suffers from performance degradation over time due to changing real-world circumstances and data patterns.')
+.setFlashcard('Data Governance', 'An essential component of AI explainability and regulatory compliance, ensuring data is stored and maintained for audits, performance debugging, and meeting legal requirements.')
+.setFlashcard('Supervised Learning', 'A machine learning approach that requires data labeling, which often involves manual human intervention to ensure the labels are accurate and relevant to the specific use case.')
+.setFlashcard('Benchmark Evaluations', 'Standardized tests used to determine which models excel at specific tasks, though custom benchmarks are often developed for better alignment with unique project goals.')
+.setFlashcard('Synthetic Data', 'Artificially generated data used to fill gaps in training datasets when high-quality real-world data is prohibitively scarce or expensive.')
+.setFlashcard('Deployment Environments', 'The infrastructure where a model operates, ranging from on-premise hardware and cloud data centers to edge devices and end-user hardware like smartphones.')
 .build()
 
 export default aiLifecycleZeroToTrained_IBM
