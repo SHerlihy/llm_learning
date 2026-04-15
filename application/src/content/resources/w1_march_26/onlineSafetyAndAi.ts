@@ -6,6 +6,8 @@ const onlineSafetyAndAi = new ResourceBuilder('Helping young people stay safe on
 .setDateOfInclusion(new Date(2026, 3, 4))
 .setTag('kids')
 .setTag('ethics')
+.setFlashcard('AI literacy', 'The ability to use, question, and navigate AI tools so that young people can make responsible choices online.')
+.setFlashcard('Cognitive offloading', 'The phenomenon where the uncritical use of AI tools limits the development of a learner\'s higher-order thinking skills.')
 .build()
 
 export default onlineSafetyAndAi

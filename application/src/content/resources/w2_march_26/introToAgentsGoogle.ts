@@ -6,6 +6,9 @@ const introToAgentsGoogle = new ResourceBuilder('Intro to Agentic AI by Google')
 .setOverview('The Google definition of what agentic AI is.')
 .setTag('agent')
 .setTag('chill')
+.setFlashcard('Perception', 'The stage where an AI gathers information from its surroundings and various sources, such as sensors or databases, to understand the current situation.')
+.setFlashcard('Reasoning', 'The process of using a large language model (LLM) to analyze data, understand context, and formulate potential solutions to a task.')
+.setFlashcard('AI agents', 'The autonomous building blocks of agentic AI, designed to perform specific tasks, which are then coordinated to achieve broader objectives.')
 .build()
 
 export default introToAgentsGoogle

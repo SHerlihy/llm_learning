@@ -5,6 +5,13 @@ const ethicsIBM = new ResourceBuilder("IBM\'s Point of View on AI Ethics by IBM"
 .setDateOfInclusion(new Date(2026, 3, 9))
 .setOverview("A progression through AI ethics from Academic definition to organisational implementation.")
 .setTag("ethics")
+.setFlashcard('AI ethics', 'A multidisciplinary field that studies how to optimize the beneficial impact of artificial intelligence while reducing risks and adverse outcomes.')
+.setFlashcard('Respect for Persons', 'A principle that recognizes individual autonomy and requires protection for those with diminished autonomy, primarily focused on consent.')
+.setFlashcard('Beneficence', 'An ethical principle derived from healthcare ("do no harm") applied to AI to prevent the amplification of biases.')
+.setFlashcard('Justice', 'A principle concerning fairness and equality in how the burdens and benefits of AI and experimentation are distributed.')
+.setFlashcard('Foundation models', 'Large-scale generative models adapted to a wide range of tasks, typically trained on unlabeled data using self-supervision.')
+.setFlashcard('Technological singularity', 'A theoretical scenario where technological growth becomes uncontrollable and irreversible, leading to unpredictable changes in civilization.')
+.setFlashcard('Governance', 'The act of overseeing the AI lifecycle through internal policies, processes, staff, and systems to ensure alignment with principles and regulations.')
 .build()
 
 export default ethicsIBM

@@ -5,6 +5,10 @@ const aiLifecycleTrainedToApplication_AWS = new ResourceBuilder("AI Lifecycle - 
 .setDateOfInclusion(new Date(2026, 3, 9))
 .setOverview("A light overview of concerns to address when choosing a pre-trained LLM model to use in an AI application.")
 .setTag("chill")
+.setFlashcard('Scoping', 'The stage where the project\'s goals, requirements, and potential use cases are clearly defined, setting the foundation for the development process.')
+.setFlashcard('Model Selection', 'The phase focused on evaluating and adopting a generative AI model based on specific requirements, functionalities, and performance metrics.')
+.setFlashcard('Model Customization', 'The process of aligning a pre-trained model with an application\'s goals using techniques like prompt engineering, RAG, or fine-tuning.')
+.setFlashcard('Deployment', 'The phase where a generative AI solution is moved from a development environment to production, making it accessible to users and scaling it for real-world usage.')
 .build()
 
 export default aiLifecycleTrainedToApplication_AWS

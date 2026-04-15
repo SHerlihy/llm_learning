@@ -7,6 +7,10 @@ const googleCompressionAlgo = new ResourceBuilder('TurboQuant: Redefining AI eff
 .setTag('commerce')
 .setTag('cost')
 .setTag('coding')
+.setFlashcard('Key-value cache', 'A high-speed storage system that saves frequently used information under simple labels for instant retrieval, avoiding slow database searches.')
+.setFlashcard('Vector quantization', 'A data compression technique used to reduce the size of high-dimensional vectors, enhancing search speed and reducing memory costs.')
+.setFlashcard('TurboQuant', 'A compression algorithm designed to reduce memory overhead in vector quantization without sacrificing AI model performance or accuracy.')
+.setFlashcard('Needle-in-haystack', 'Standard tests used to evaluate an AI model\'s ability to find a specific, minute piece of information within a massive volume of data.')
 .build()
 
 export default googleCompressionAlgo
