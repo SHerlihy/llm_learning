@@ -1,1 +1,5 @@
 In file @w1_april_26/hackingAndAI/intro.ts identify 2 keyword to definition pairs by analysing the text string. In the file @w1_april_26/hackingAndAI.ts, for each keyword to definition pair add a method call to the ResourceBuilder object of .setFlashcard(<keyword>, <definition>).
+
+Look at the string stored in the transcript variable in file @w1_april_26/hackingAndAI.ts and identify relevant chapters. 
+
+Add the chapter titles into the string. For example, `<previous chapter text> \n <chapter number><chapter title> \n <current chapter text>` 
