@@ -1,6 +1,7 @@
 worktrees
 
 *.lock*
+*package-lock.json
 
 **/.terraform/*
 *.tfstate
