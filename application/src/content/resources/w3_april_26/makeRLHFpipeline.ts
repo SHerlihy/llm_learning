@@ -6,6 +6,11 @@ const makeRlHFpipeline = new ResourceBuilder('Building an RLHF Pipeline for LLMs
 .setDateOfInclusion(new Date(2026, 4, 16, 7))
 .setTag('coding')
 .setTag('training')
+.setFlashcard('RLHF', 'A technique to align LLMs with human preferences by training a reward model and fine-tuning via reinforcement learning.')
+.setFlashcard('Pretraining', 'The initial phase of training a language model on vast text data to acquire general knowledge and language understanding.')
+.setFlashcard('Supervised Fine-Tuning (SFT)', 'Fine-tuning a pretrained model on curated example prompts and responses to teach specific tasks or styles.')
+.setFlashcard('Reward Model (RM)', 'A model trained to score AI outputs based on human preferences, providing a numerical reward signal.')
+.setFlashcard('PPO', 'A stable reinforcement learning algorithm used to fine-tune an LLM by maximizing reward model scores.')
 .build()
 
 export default makeRlHFpipeline
