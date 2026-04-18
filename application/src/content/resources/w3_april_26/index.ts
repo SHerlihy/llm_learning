@@ -4,11 +4,13 @@ import makeRlHFpipeline from "./makeRLHFpipeline";
 import makeRLAIFpipeline from "./makeRLAIFpipeline";
 import specDrivenDevJetbrains from "./specDriveDevJetbrains";
 import vibeToSpecDrivenForSDLC from "./vibeToSpecDrivenForSDLC";
+import llmBenchmarksCooked from "./llmBenchmarksCooked";
 
 export const w3April26Resources: Array<Resource> = [
     llmDrivenSpecCreation,
     makeRlHFpipeline,
     makeRLAIFpipeline,
     specDrivenDevJetbrains,
-    vibeToSpecDrivenForSDLC
+    vibeToSpecDrivenForSDLC,
+    llmBenchmarksCooked
 ]
