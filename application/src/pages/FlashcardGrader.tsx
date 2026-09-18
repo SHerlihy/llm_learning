@@ -35,9 +35,7 @@ const FlashcardGrader = ({
             throw error
         }
 
-        const answer = await demarshall(response)
-
-        setChat((prev) => [...prev, query, answer])
+        setChat((prev) => [...prev, query, response])
     }
 
     useEffect(() => {

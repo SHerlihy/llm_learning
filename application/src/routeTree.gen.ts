@@ -9,17 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as FlashcardRouteImport } from './routes/flashcard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FlashcardRouteImport } from './routes/flashcard'
 
-const FlashcardRoute = FlashcardRouteImport.update({
-  id: '/flashcard',
-  path: '/flashcard',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlashcardRoute = FlashcardRouteImport.update({
+  id: '/flashcard',
+  path: '/flashcard',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -51,18 +51,18 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/flashcard': {
-      id: '/flashcard'
-      path: '/flashcard'
-      fullPath: '/flashcard'
-      preLoaderRoute: typeof FlashcardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flashcard': {
+      id: '/flashcard'
+      path: '/flashcard'
+      fullPath: '/flashcard'
+      preLoaderRoute: typeof FlashcardRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
