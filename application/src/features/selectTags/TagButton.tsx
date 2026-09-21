@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSearch } from '@tanstack/react-router'
-import { Tag } from '@/content'
+import { Tag, tagToPos } from '@/content'
 import TagButtonView from './TagButtonView'
 
 type Props = {
@@ -13,20 +13,22 @@ const TagButton = ({
     onClick
 }: Props) => {
     const [isSelected, setSelected] = useState(false)
-    const { tags } = useSearch({ from: '/' })
+    const { selectedTags } = useSearch({ from: '/' })
 
     useEffect(() => {
-        if (!tags) {
+        if (!selectedTags) {
             setSelected(false)
             return
         }
 
-        if (tags[tag] === undefined) {
-            setSelected(false)
+        const pos = tagToPos[tag].pos
+        if (selectedTags > (selectedTags ^ pos)){
+          setSelected(true)
         } else {
-            setSelected(true)
+          setSelected(false)
         }
-    }, [tag, tags])
+
+    }, [tag, selectedTags])
 
     return (
         <TagButtonView

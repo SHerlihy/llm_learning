@@ -1,4 +1,4 @@
-import { Tag, tags, tagToBool } from '@/content'
+import { Tag, tags, tagToBool, tagToPos } from '@/content'
 import TagButton from './TagButton'
 import { useNavigate } from '@tanstack/react-router'
 import AllButton from './AllButton'
@@ -13,23 +13,16 @@ const TagSelector = ({
     const navigate = useNavigate({ from: '/' })
 
     const handleClick = (tag: Tag) => {
+              const pos = tagToPos[tag].pos
         navigate({
             search: (params) => {
-                if (params.tags === undefined) {
-                    params['tags'] = tagToBool
-                }
-
-                if (params.tags === undefined){
-                    throw TypeError("Search params tags not set.")
-                }
-
-                if (params.tags[tag] !== true) {
-                    params.tags[tag] = true
+                if (params.selectedTags === undefined) {
+                    params['selectedTags'] = pos
                     return params
                 }
 
-                    params.tags[tag] = false
-                    return params
+                params.selectedTags = params.selectedTags ^ pos
+                return params
             },
         })
     }

@@ -1,5 +1,5 @@
 import { useSearch } from "@tanstack/react-router"
-import { allResourceNames, Tag, tagToNamesByDoI } from "@/content"
+import { tags as allTags, allResourceNames, Tag, tagToNamesByDoI } from "@/content"
 import ResourceListView from "./ResourceListView"
 
 const getResourceIntersectionFromTags = (tags: Array<Tag>) => {
@@ -23,23 +23,25 @@ const getResourceIntersectionFromTags = (tags: Array<Tag>) => {
 
 //composite component to show feedback components
 const ResourceList = () => {
-    const { tags: tagsObj } = useSearch({ from: '/' })
+    const { selectedTags } = useSearch({ from: '/' })
 
-    const tags: Array<Tag> = []
+  let sTags = selectedTags
 
-    if (tagsObj !== undefined){
-      Object.entries(tagsObj).forEach(([tag, val])=>{
-      if(val===false){
-        return
-      }
-
-      // @ts-ignore
-      tags.push(tag)
-    })
+  if (sTags===undefined){
+    sTags=0
   }
 
-  console.log(tagsObj)
-  console.log(tags)
+  const tags: Array<Tag> = []
+  let idx = 0
+  while (sTags > 0){
+    sTags--
+    while (sTags % 2 > 0){
+      sTags = sTags >> 1
+      idx++
+    }
+    tags.push(allTags[idx])
+  }
+
     const intersectionTaged = getResourceIntersectionFromTags(tags)
 
     const resourceNames = Array.from(intersectionTaged)
