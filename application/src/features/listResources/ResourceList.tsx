@@ -25,8 +25,21 @@ const getResourceIntersectionFromTags = (tags: Array<Tag>) => {
 const ResourceList = () => {
     const { tags: tagsObj } = useSearch({ from: '/' })
 
-    const tags: Array<Tag> = tagsObj ? Object.keys(tagsObj) as Array<Tag> : []
+    const tags: Array<Tag> = []
 
+    if (tagsObj !== undefined){
+      Object.entries(tagsObj).forEach(([tag, val])=>{
+      if(val===false){
+        return
+      }
+
+      // @ts-ignore
+      tags.push(tag)
+    })
+  }
+
+  console.log(tagsObj)
+  console.log(tags)
     const intersectionTaged = getResourceIntersectionFromTags(tags)
 
     const resourceNames = Array.from(intersectionTaged)
