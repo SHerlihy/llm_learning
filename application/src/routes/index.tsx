@@ -1,11 +1,11 @@
-import { tags, TagBoolSchema } from '@/content'
+import { tags } from '@/content'
 import ResourceList from '@/features/listResources/ResourceList'
 import TagSelector from '@/features/selectTags/TagSelector'
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 
 const resourceTagSchema = z.object({
-    tags: z.optional(TagBoolSchema)
+    selectedTags: z.optional(z.number())
 })
 
 export const Route = createFileRoute('/')({

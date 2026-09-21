@@ -14,17 +14,15 @@ const AllButton = () => {
     }
 
     const [isSelected, setSelected] = useState(false)
-    const { tags } = useSearch({ from: '/' })
+    const { selectedTags } = useSearch({ from: '/' })
 
     useEffect(() => {
-        if (!tags || Object.keys(tags).length < 1) {
-            setSelected(true)
-            return
-        } else {
-            setSelected(false)
-            return
-        }
-    }, [tags])
+        if (selectedTags === undefined || selectedTags === 0){
+      setSelected(true)
+    } else {
+      setSelected(false)
+    }
+    }, [selectedTags])
 
     return (
         <TagButtonView

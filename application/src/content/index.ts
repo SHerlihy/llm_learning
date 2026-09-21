@@ -22,6 +22,14 @@ export const tags = [
     'commerce'
 ] as const
 
+export const tagToPos = {}
+tags.forEach((tag, idx)=>{
+  tagToPos[tag] = {
+    idx,
+    pos: 1 << idx
+  }
+})
+
 export const tagToBool = Object.create(null)
 const tagBoolSchema = Object.create(null)
 
