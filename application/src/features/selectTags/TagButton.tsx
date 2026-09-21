@@ -21,11 +21,7 @@ const TagButton = ({
             return
         }
 
-        if (tags[tag] === undefined) {
-            setSelected(false)
-        } else {
-            setSelected(true)
-        }
+        setSelected(tags[tag])
     }, [tag, tags])
 
     return (

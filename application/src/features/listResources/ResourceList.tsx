@@ -38,8 +38,6 @@ const ResourceList = () => {
     })
   }
 
-  console.log(tagsObj)
-  console.log(tags)
     const intersectionTaged = getResourceIntersectionFromTags(tags)
 
     const resourceNames = Array.from(intersectionTaged)
