@@ -30,18 +30,6 @@ tags.forEach((tag, idx)=>{
   }
 })
 
-export const tagToBool = Object.create(null)
-const tagBoolSchema = Object.create(null)
-
-tags.forEach((tag)=>{
-  tagToBool[tag] = false
-  tagBoolSchema[tag] = z.boolean().default(false)
-})
-
-Object.seal(tagToBool)
-export const TagBoolSchema = z.object(tagBoolSchema)
-
-
 export type Tag = (typeof tags)[number]
 export type NameToResourceByDoI = {
     [key: string]: Resource
